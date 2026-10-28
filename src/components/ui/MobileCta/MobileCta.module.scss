@@ -1,0 +1,33 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'glass' as *;
+
+.bar {
+    @include focus-ring;
+    @include glass-dark(0.88, 18px);
+    position: fixed;
+    left: $space-3;
+    right: $space-3;
+    bottom: calc(#{$space-3} + env(safe-area-inset-bottom, 0px));
+    z-index: $z-sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    border-radius: $radius-full;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:active {
+        transform: scale(0.97);
+    }
+
+    @include md {
+        display: none;
+    }
+}
+
+.withChat {
+    right: calc(#{$space-3} + 56px + #{$space-2});
+}

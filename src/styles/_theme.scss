@@ -1,0 +1,25 @@
+@mixin light-tokens {
+    --c-bg: #faf9f6;
+    --c-bg-soft: #f3efe8;
+    --c-surface: #ffffff;
+    --c-tint: #e8eef5;
+    --c-border: #e8e5df;
+    --c-divider: #e8e5df;
+    --c-text: #17191c;
+    --c-text-2: #5f5b55;
+    --c-primary: #00285a;
+    --c-primary-hover: #1a4a7a;
+    --c-accent: #f2a93b;
+    --c-accent-hover: #e59a25;
+    --c-on-accent: #00285a;
+    --c-navy: #00285a;
+    --c-navy-2: #1a4a7a;
+    --c-sand: #ede5d8;
+    --c-sky: #d6e4f5;
+    --c-on-navy: #dbe4ef;
+}
+
+:root {
+    color-scheme: light;
+    @include light-tokens;
+}

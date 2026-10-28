@@ -1,0 +1,200 @@
+@use 'glass' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.sec {
+    padding-block: $space-12 clamp(64px, 9vw, 120px);
+}
+
+.wrap {
+    max-width: $container-width;
+    margin-inline: auto;
+    padding-inline: $space-5;
+
+    @include md {
+        padding-inline: $space-8;
+    }
+}
+
+.row {
+    display: grid;
+    gap: $space-4;
+    align-items: center;
+    padding-block: $space-10;
+    border-top: 1px solid c(divider);
+
+    h2 {
+        font-family: $font-display;
+        font-size: 2rem;
+        font-weight: 400;
+        color: c(primary);
+    }
+
+    p {
+        line-height: 1.6;
+        color: c(text-2);
+    }
+
+    @include lg {
+        grid-template-columns: 1fr 2fr auto;
+        gap: $space-12;
+    }
+}
+
+.rec h2::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: $space-3;
+    border-radius: 50%;
+    background: c(accent);
+}
+
+.hint {
+    margin-top: $space-2;
+    font-weight: 600;
+    color: c(primary) !important;
+}
+
+.apk {
+    padding: $space-8 $space-5;
+    border-radius: $radius-3xl;
+    border-top: 0;
+    background: c(navy);
+
+    h2,
+    p,
+    li {
+        color: #fff;
+    }
+
+    p {
+        color: c(on-navy);
+    }
+
+    @include md {
+        padding: $space-10;
+    }
+}
+
+.steps {
+    display: grid;
+    gap: $space-2;
+    margin: $space-4 0;
+    padding-left: $space-5;
+    line-height: 1.5;
+    color: c(on-navy);
+}
+
+.warn {
+    display: flex;
+    gap: $space-2;
+    align-items: center;
+    font-size: 0.9rem;
+
+    svg {
+        flex-shrink: 0;
+        color: c(accent);
+    }
+}
+
+.btn {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    min-height: 52px;
+    padding-inline: $space-6;
+    border-radius: $radius-md;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s $ease-out;
+}
+
+a.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btnNavy {
+    background: c(primary);
+    color: #fff;
+}
+
+.btnAccent {
+    background: c(accent);
+    color: c(on-accent);
+}
+
+.btnOff {
+    background: c(border);
+    color: c(text-2);
+}
+
+// ====== Verre ======
+.sec {
+    @include blobs(rgba(214, 228, 245, 0.9), rgba(242, 169, 59, 0.3));
+}
+
+.row:not(.apk) {
+    @include glass(0.6, 16px);
+    margin-bottom: $space-4;
+    padding: $space-8 $space-6;
+    border-radius: 32px;
+
+    @include md {
+        padding-inline: $space-10;
+    }
+}
+
+.apk {
+    @include glass-dark(0.9, 20px);
+    border-radius: 36px;
+}
+
+.btn {
+    border-radius: $radius-full;
+
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+// ====== Code QR (ordinateur uniquement) ======
+.qr {
+    display: none;
+
+    @include lg {
+        @include glass(0.7, 16px);
+        display: flex;
+        align-items: center;
+        gap: $space-6;
+        max-width: 560px;
+        margin-bottom: $space-6;
+        padding: $space-5 $space-6;
+        border-radius: 32px;
+
+        p {
+            line-height: 1.55;
+            color: c(text-2);
+        }
+
+        b {
+            color: c(primary);
+        }
+    }
+}
+
+.qrCode {
+    flex-shrink: 0;
+    padding: $space-3;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px c(border);
+}
+
+.apk {
+    background-image: url('/src/assets/patterns/wax-ecailles-light.svg');
+    background-size: 120px;
+}

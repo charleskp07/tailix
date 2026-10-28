@@ -1,0 +1,32 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.fab {
+    @include focus-ring;
+    position: fixed;
+    right: $space-3;
+    bottom: calc(#{$space-3} + env(safe-area-inset-bottom, 0px));
+    z-index: $z-sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #1faa59;
+    color: #fff;
+    transition: transform 0.25s $ease-out;
+
+    &:hover {
+        transform: translateY(-3px);
+    }
+
+    &:active {
+        transform: scale(0.92);
+    }
+
+    @include md {
+        right: $space-6;
+        bottom: $space-6;
+    }
+}

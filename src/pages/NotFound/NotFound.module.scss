@@ -1,0 +1,35 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'banner' as *;
+
+.sec {
+    @include banner;
+    display: grid;
+    gap: $space-4;
+    justify-items: center;
+    align-content: center;
+    min-height: 72vh;
+    padding-inline: $space-5;
+    padding-bottom: $space-16;
+    text-align: center;
+}
+
+.big {
+    font-family: $font-display;
+    font-size: clamp(6rem, 22vw, 14rem);
+    line-height: 0.9;
+    color: c(accent);
+}
+
+.h1 {
+    font-family: $font-display;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: #fff;
+}
+
+.text {
+    max-width: 30rem;
+    line-height: 1.6;
+    color: c(on-navy);
+}

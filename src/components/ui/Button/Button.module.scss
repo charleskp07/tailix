@@ -1,0 +1,56 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.btn {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    min-height: 48px;
+    padding-inline: $space-6;
+    border: 0;
+    border-radius: $radius-full;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s $ease-out, background 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+.lg {
+    min-height: 56px;
+    padding-inline: $space-8;
+    font-size: 1.05rem;
+}
+
+.primary {
+    background: c(primary);
+    color: #fff;
+
+    &:hover {
+        background: c(primary-hover);
+    }
+}
+
+.accent {
+    background: c(accent);
+    color: c(on-accent);
+
+    &:hover {
+        background: c(accent-hover);
+    }
+}
+
+.ghost {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px c(primary);
+    color: c(primary);
+}

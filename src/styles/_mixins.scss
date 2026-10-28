@@ -1,0 +1,53 @@
+@use 'variables' as *;
+
+@mixin sm { @media (min-width: $bp-sm) { @content; } }
+@mixin md { @media (min-width: $bp-md) { @content; } }
+@mixin lg { @media (min-width: $bp-lg) { @content; } }
+@mixin xl { @media (min-width: $bp-xl) { @content; } }
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin focus-ring {
+    &:focus-visible {
+        outline: 2px solid c(primary);
+        outline-offset: 3px;
+    }
+}
+
+@mixin truncate($lines: 1) {
+    overflow: hidden;
+
+    @if $lines == 1 {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    } @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@mixin eyebrow {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: c(text-2);
+}
+
+@mixin lead {
+    font-size: clamp(1rem, 0.4vw + 0.95rem, 1.2rem);
+    line-height: 1.65;
+    color: c(text-2);
+}

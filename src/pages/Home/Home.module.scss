@@ -1,0 +1,611 @@
+@use 'banner' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'glass' as *;
+
+.wrap {
+    max-width: $container-width;
+    margin-inline: auto;
+    padding-inline: $space-5;
+
+    @include md {
+        padding-inline: $space-8;
+    }
+}
+
+.sec {
+    padding-block: clamp(64px, 9vw, 128px);
+}
+
+.secTop0 {
+    padding-top: 0;
+}
+
+.bentoSec {
+    padding-top: 0;
+}
+
+.navy {
+    background: c(navy) url('/src/assets/patterns/wax-losanges-light.svg') 0 0 / 110px;
+    color: #fff;
+
+    .lead {
+        color: c(on-navy);
+    }
+}
+
+.sand {
+    background: c(sand) url('/src/assets/patterns/wax-plumes-navy.svg') 0 0 / 130px;
+}
+
+.h1,
+.h2,
+.h3 {
+    font-family: $font-display;
+    font-weight: 400;
+    color: c(primary);
+}
+
+.h1 {
+    font-size: clamp(2.7rem, 7.5vw + 0.3rem, 5.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.h2 {
+    font-size: clamp(2rem, 4vw + 0.8rem, 3.6rem);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+}
+
+.h3 {
+    font-size: clamp(1.7rem, 2vw + 1rem, 2.4rem);
+    line-height: 1.12;
+}
+
+.navy .h2,
+.navy .h3 {
+    color: #fff;
+}
+
+.lead {
+    @include lead;
+    max-width: 34rem;
+}
+
+.leadSm {
+    margin-top: $space-4;
+    margin-bottom: $space-10;
+}
+
+
+.btn {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    min-height: 52px;
+    padding-inline: $space-6;
+    border-radius: $radius-full;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.25s $ease-out, background 0.2s;
+
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+.btnAccent {
+    background: c(accent);
+    color: c(on-accent);
+
+    &:hover {
+        background: c(accent-hover);
+    }
+}
+
+.btnNavy {
+    background: c(primary);
+    color: #fff;
+
+    &:hover {
+        background: c(primary-hover);
+    }
+}
+
+.btnGhost {
+    box-shadow: inset 0 0 0 1.5px c(primary);
+    color: c(primary);
+}
+
+.hero {
+    @include banner;
+}
+
+.heroArt {
+    @include banner-art('wax-bold-navy', 170px);
+}
+
+.hero .h1 {
+    color: #fff;
+}
+
+.hero .lead {
+    color: c(on-navy);
+}
+
+.hero .btnGhost {
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.7);
+    color: #fff;
+}
+
+.heroGrid {
+    display: grid;
+    gap: $space-8;
+    align-items: center;
+    padding-bottom: $space-16;
+
+    @include lg {
+        grid-template-columns: 1.15fr 1fr;
+        padding-bottom: $space-20;
+    }
+}
+
+.heroText {
+    display: grid;
+    gap: $space-6;
+    justify-items: start;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+    margin-top: $space-2;
+}
+
+.heroPhones {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: 420px;
+    padding-block: $space-6;
+
+    @include md {
+        min-height: 560px;
+    }
+
+}
+
+.phoneFront {
+    position: relative;
+    z-index: 1;
+    max-width: 230px;
+    transform: rotate(2deg);
+
+    @include md {
+        max-width: 280px;
+    }
+}
+
+.phoneBack {
+    position: absolute;
+    left: 6%;
+    top: 12%;
+    display: none;
+    max-width: 230px;
+    transform: rotate(-6deg);
+
+    @include md {
+        display: block;
+    }
+}
+
+.chip {
+    @include glass(0.8, 16px);
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3 $space-5;
+    border-radius: $radius-full;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: c(primary);
+
+    svg {
+        color: c(accent-hover);
+    }
+
+    // @media (prefers-reduced-motion: no-preference) {
+    //     animation: float 6s ease-in-out infinite;
+    // }
+}
+
+.chipA {
+    top: 8%;
+    right: 4%;
+}
+
+.chipB {
+    bottom: 10%;
+    left: 4%;
+    animation-delay: -3s;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+// Mètre ruban : l'élément signature
+.tape {
+    height: 52px;
+    background:
+        repeating-linear-gradient(90deg, c(navy) 0 1px, transparent 1px 8px) left bottom / 100% 12px no-repeat,
+        repeating-linear-gradient(90deg, c(navy) 0 2px, transparent 2px 80px) left bottom / 100% 26px no-repeat,
+        c(accent);
+}
+
+// ---------- Valeur
+.valueGrid {
+    display: grid;
+    gap: $space-8;
+
+    @include lg {
+        grid-template-columns: 1.3fr 1fr;
+        align-items: end;
+    }
+}
+
+
+.steps {
+    display: grid;
+    gap: $space-10;
+    margin-top: $space-12;
+
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-8;
+    }
+
+    li {
+        position: relative;
+        padding-top: $space-8;
+        border-top: 2px dashed c(navy-2);
+
+        h3 {
+            margin-top: $space-4;
+            font-family: $font-display;
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: c(primary);
+        }
+
+        p {
+            max-width: 26rem;
+            margin-top: $space-2;
+            line-height: 1.65;
+            color: c(text-2);
+        }
+    }
+}
+
+.stepNo {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: c(accent);
+    font-weight: 700;
+    color: c(on-accent);
+}
+
+.video {
+    width: 100%;
+    margin-top: $space-10;
+    border-radius: 32px;
+    background: c(navy);
+    aspect-ratio: 16 / 9;
+}
+
+// ---------- Fonctionnalités : liste éditoriale, sans cartes
+.bento {
+    display: grid;
+    gap: 0 $space-10;
+    margin-top: $space-12;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.cell {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $space-1 $space-4;
+    padding-block: $space-6;
+    border-top: 1px solid c(divider);
+
+    h3 {
+        align-self: center;
+        font-family: $font-display;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 1.2;
+        color: c(primary);
+    }
+
+    p {
+        grid-column: 2;
+        line-height: 1.6;
+        color: c(text-2);
+    }
+}
+
+.cellIcon {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: c(sand);
+    color: c(primary);
+}
+
+// ---------- Présentation interactive
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-top: $space-8;
+}
+
+.tab {
+    @include focus-ring;
+    min-height: 44px;
+    padding-inline: $space-5;
+    border: 0;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.1);
+    color: c(on-navy);
+    font: inherit;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.18);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.tabOn,
+.tabOn:hover {
+    background: c(accent);
+    color: c(on-accent);
+}
+
+.panel {
+    display: grid;
+    gap: $space-10;
+    align-items: center;
+    margin-top: $space-12;
+
+    @include lg {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.panelText {
+    display: grid;
+    gap: $space-5;
+    justify-items: start;
+}
+
+.panelPhone {
+    display: flex;
+    justify-content: center;
+}
+
+.points {
+    display: grid;
+    gap: $space-3;
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: $space-3;
+        color: #fff;
+
+        svg {
+            flex-shrink: 0;
+            color: c(accent);
+        }
+    }
+}
+
+// ---------- Hors ligne
+.offlineGrid {
+    display: grid;
+    gap: $space-10;
+    align-items: center;
+
+    @include lg {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.offlineList {
+    display: grid;
+
+    li {
+        padding-block: $space-5;
+        border-top: 2px dashed c(navy-2);
+        font-family: $font-display;
+        font-size: 1.5rem;
+        color: c(primary);
+
+        &:last-child {
+            border-bottom: 2px dashed c(navy-2);
+        }
+    }
+}
+
+// ---------- Formules (aperçu)
+.plans {
+    display: grid;
+    gap: $space-4;
+    margin-bottom: $space-10;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    padding: $space-8 $space-6;
+    border-radius: 24px;
+    box-shadow: inset 0 0 0 1px c(border);
+
+    h3 {
+        font-family: $font-display;
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: c(primary);
+    }
+}
+
+.planOn {
+    background: c(navy);
+    box-shadow: none;
+
+    h3,
+    .planTag,
+    .price,
+    .price span {
+        color: #fff;
+    }
+}
+
+.planTag {
+    color: c(text-2);
+}
+
+.price {
+    margin-top: $space-6;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    span {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: c(text-2);
+    }
+}
+
+.quotes {
+    display: grid;
+    gap: $space-6;
+    margin-top: $space-10;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    blockquote {
+        font-family: $font-display;
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    p {
+        margin-top: $space-3;
+        color: c(text-2);
+    }
+}
+
+// ---------- FAQ
+.faqGrid {
+    display: grid;
+    gap: $space-8;
+
+    @include lg {
+        grid-template-columns: 1fr 1.6fr;
+    }
+}
+
+.faq {
+    border-bottom: 1px solid c(divider);
+}
+
+.faqItem {
+    border-top: 1px solid c(divider);
+}
+
+.faqBtn {
+    @include focus-ring;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    width: 100%;
+    padding: $space-6 0;
+    border: 0;
+    background: none;
+    color: c(text);
+    font: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.faqPanel {
+    overflow: hidden;
+
+    p {
+        max-width: 40rem;
+        padding-bottom: $space-6;
+        line-height: 1.7;
+        color: c(text-2);
+    }
+}
+
+// ---------- Appel final
+.cta {
+    background: c(accent) url('/src/assets/patterns/wax-rosace-navy.svg') 0 0 / 170px;
+}
+
+.ctaInner {
+    display: grid;
+    gap: $space-5;
+    justify-items: center;
+    padding-block: $space-8;
+    text-align: center;
+
+    .h2,
+    .lead {
+        color: c(on-accent);
+    }
+}

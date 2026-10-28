@@ -1,0 +1,150 @@
+@use 'glass' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.sec {
+    max-width: $container-width;
+    margin-inline: auto;
+    padding: $space-12 $space-5 clamp(64px, 9vw, 120px);
+
+    @include md {
+        padding-inline: $space-8;
+    }
+}
+
+.item {
+    display: grid;
+    gap: $space-5;
+    align-items: center;
+    padding-block: $space-8;
+    border-top: 1px solid c(divider);
+
+    @include md {
+        grid-template-columns: 200px 1fr;
+        gap: $space-12;
+    }
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    border-radius: $radius-3xl;
+
+    @include md {
+        height: 160px;
+    }
+}
+
+.navy { background: c(navy); color: #fff; }
+.sky { background: c(sky); color: c(primary); }
+.accent { background: c(accent); color: c(on-accent); }
+.sand { background: c(sand); color: c(primary); }
+
+.text {
+    h2 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: $space-3;
+        font-family: $font-display;
+        font-size: clamp(1.7rem, 2vw + 1rem, 2.4rem);
+        font-weight: 400;
+        color: c(primary);
+    }
+
+    small {
+        padding: 3px 10px;
+        border-radius: $radius-full;
+        background: c(accent);
+        font-family: $font-sans;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: c(on-accent);
+    }
+
+    p {
+        max-width: 36rem;
+        margin-top: $space-2;
+        line-height: 1.65;
+        color: c(text-2);
+    }
+}
+
+.cta {
+    padding-top: $space-10;
+    border-top: 1px solid c(divider);
+}
+
+.btn {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    min-height: 52px;
+    padding-inline: $space-6;
+    border-radius: $radius-md;
+    background: c(primary);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.sec {
+    @include blobs(rgba(214, 228, 245, 0.9), rgba(242, 169, 59, 0.3));
+    max-width: none;
+
+    > * {
+        max-width: $container-width - 2 * $space-8;
+        margin-inline: auto;
+    }
+}
+
+.item {
+    @include glass(0.6, 16px);
+    @include press;
+    margin-bottom: $space-4;
+    padding: $space-4;
+    border-radius: 36px;
+
+    @include md {
+        padding: $space-5;
+    }
+}
+
+.badge {
+    border-radius: 28px;
+}
+
+.text {
+    padding: $space-2 $space-4 $space-4;
+
+    @include md {
+        padding: $space-4;
+    }
+}
+
+.btn {
+    border-radius: $radius-full;
+}
+
+
+.navy {
+    background-image: url('/src/assets/patterns/wax-rosace-light.svg');
+    background-size: 90px;
+}
+
+.sky {
+    background-image: url('/src/assets/patterns/wax-plumes-navy.svg');
+    background-size: 70px;
+}
+
+.accent {
+    background-image: url('/src/assets/patterns/wax-rosace-navy.svg');
+    background-size: 90px;
+}
+
+.sand {
+    background-image: url('/src/assets/patterns/wax-losanges-navy.svg');
+    background-size: 60px;
+}

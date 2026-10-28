@@ -1,0 +1,142 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.phone {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 9 / 19;
+    padding: 9px;
+    border-radius: 40px;
+    background: #0a1a33;
+    box-shadow: 0 30px 60px -20px rgba(0, 40, 90, 0.45), inset 0 0 0 2px #1d3558;
+}
+
+.screen {
+    height: 100%;
+    overflow: hidden;
+    border-radius: 32px;
+    background: c(bg);
+}
+
+.shot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.ui {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    height: 100%;
+    padding: $space-10 $space-4 $space-4;
+}
+
+.title {
+    font-family: $font-display;
+    font-size: 1.6rem;
+    color: c(primary);
+}
+
+.chips {
+    display: flex;
+    gap: $space-2;
+}
+
+.chip {
+    padding: 6px 12px;
+    border-radius: $radius-full;
+    background: c(sand);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: c(text-2);
+}
+
+.chipOn {
+    background: c(primary);
+    color: #fff;
+}
+
+.search {
+    padding: $space-3;
+    border-radius: $radius-lg;
+    background: c(sand);
+    font-size: 0.75rem;
+    color: c(text-2);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-3;
+    border-radius: $radius-xl;
+    background: c(surface);
+    box-shadow: inset 0 0 0 1px c(border);
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: c(sky);
+}
+
+.lines {
+    display: grid;
+    flex: 1;
+    gap: 6px;
+
+    i {
+        display: block;
+        height: 7px;
+        border-radius: 4px;
+        background: c(border);
+
+        &:last-child {
+            width: 55%;
+        }
+    }
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: c(navy-2);
+}
+
+.dotAccent {
+    background: c(accent);
+}
+
+.measure {
+    display: flex;
+    justify-content: space-between;
+    padding: $space-3 0;
+    border-bottom: 1px dashed c(border);
+    font-size: 0.8rem;
+    color: c(text-2);
+
+    b {
+        color: c(primary);
+    }
+}
+
+.cal {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: c(sand);
+}
+
+.dayOn {
+    background: c(accent);
+}

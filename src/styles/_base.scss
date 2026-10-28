@@ -1,0 +1,44 @@
+@use 'variables' as *;
+
+html {
+    font-family: $font-sans;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    min-height: 100vh;
+    background: c(bg);
+    color: c(text);
+    line-height: 1.5;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+::selection {
+    background: c(accent);
+    color: c(on-accent);
+}
+
+.skip-link {
+    position: fixed;
+    top: $space-3;
+    left: $space-3;
+    z-index: 100;
+    padding: $space-3 $space-5;
+    border-radius: $radius-full;
+    background: c(primary);
+    color: #fff;
+    font-weight: 600;
+    transform: translateY(-200%);
+
+    &:focus {
+        transform: none;
+    }
+}

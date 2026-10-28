@@ -1,0 +1,21 @@
+@use 'variables' as *;
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-family: $font-display;
+    line-height: 1;
+    color: c(primary);
+}
+
+.mark {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;
+    border-radius: 28%;
+}
+
+.light {
+    color: #fff;
+}

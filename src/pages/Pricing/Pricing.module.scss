@@ -1,0 +1,310 @@
+@use 'glass' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.wrap {
+    max-width: $container-width;
+    margin-inline: auto;
+    padding-inline: $space-5;
+
+    @include md {
+        padding-inline: $space-8;
+    }
+}
+
+.head {
+    padding-block: calc(#{$header-offset} + clamp(32px, 6vw, 72px)) $space-12;
+    background: c(sand);
+}
+
+.h1 {
+    max-width: 14ch;
+    font-family: $font-display;
+    font-size: clamp(2.6rem, 6vw + 0.5rem, 5rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: c(primary);
+}
+
+.lead {
+    @include lead;
+    max-width: 36rem;
+    margin-top: $space-5;
+}
+
+.toggle {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: $space-1;
+    margin-top: $space-8;
+    padding: $space-1;
+    border-radius: $radius-lg;
+    background: c(bg);
+}
+
+.opt {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    min-height: 44px;
+    padding-inline: $space-5;
+    border: 0;
+    border-radius: $radius-md;
+    background: none;
+    color: c(text-2);
+    font: inherit;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+
+    small {
+        padding: 2px 8px;
+        border-radius: $radius-full;
+        background: c(accent);
+        font-size: 0.72rem;
+        color: c(on-accent);
+    }
+}
+
+.optOn {
+    background: c(primary);
+    color: #fff;
+}
+
+.body {
+    padding-block: $space-12 clamp(64px, 9vw, 120px);
+}
+
+.grid {
+    display: grid;
+    gap: $space-4;
+    align-items: stretch;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    padding: $space-8 $space-6;
+    border-radius: $radius-3xl;
+    background: c(surface);
+    box-shadow: inset 0 0 0 1px c(border);
+}
+
+.on {
+    background: c(navy);
+    box-shadow: none;
+    color: #fff;
+
+    .name,
+    .tag,
+    .price span,
+    .total {
+        color: #fff;
+    }
+
+    .list svg {
+        color: c(accent);
+    }
+
+    .btn {
+        background: c(accent);
+        box-shadow: none;
+        color: c(on-accent);
+    }
+
+    @include lg {
+        margin-block: -$space-4;
+        padding-block: $space-12;
+    }
+}
+
+.name {
+    font-family: $font-display;
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: c(primary);
+}
+
+.tag {
+    margin-top: $space-1;
+    color: c(text-2);
+}
+
+.price {
+    margin-top: $space-8;
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+
+    span {
+        font-size: 0.95rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        color: c(text-2);
+    }
+}
+
+.total {
+    margin-top: $space-1;
+    font-size: 0.9rem;
+    color: c(text-2);
+}
+
+.list {
+    display: grid;
+    gap: $space-3;
+    margin-block: $space-8;
+    flex: 1;
+    align-content: start;
+
+    li {
+        display: flex;
+        gap: $space-3;
+        line-height: 1.45;
+    }
+
+    svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: c(navy-2);
+    }
+}
+
+.btn {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border-radius: $radius-md;
+    box-shadow: inset 0 0 0 1.5px c(primary);
+    color: c(primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s $ease-out;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.note {
+    max-width: 40rem;
+    margin-top: $space-12;
+    color: c(text-2);
+    line-height: 1.6;
+}
+
+// ====== Verre ======
+.head {
+    @include blobs(rgba(242, 169, 59, 0.5), rgba(214, 228, 245, 1));
+}
+
+.toggle {
+    @include glass(0.65, 16px);
+    border-radius: $radius-full;
+}
+
+.opt {
+    border-radius: $radius-full;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.body {
+    @include blobs(rgba(214, 228, 245, 0.9), rgba(242, 169, 59, 0.25));
+}
+
+.plan:not(.on) {
+    @include glass(0.6, 16px);
+}
+
+.plan {
+    border-radius: 36px;
+    @include press;
+}
+
+.btn {
+    border-radius: $radius-full;
+
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+.on {
+    background-image: url('/src/assets/patterns/wax-losanges-light.svg');
+    background-size: 100px;
+}
+
+
+.toggle {
+    margin-top: $space-8;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: none;
+}
+
+.opt {
+    color: c(on-navy);
+}
+
+.optOn {
+    background: c(accent);
+    color: c(on-accent);
+
+    small {
+        background: c(navy);
+        color: #fff;
+    }
+}
+
+
+.toggle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-1;
+    width: 100%;
+    max-width: 540px;
+    padding: $space-1;
+    background: rgba(0, 20, 50, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: $radius-full;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.opt {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-height: 52px;
+    padding: $space-2;
+    text-align: center;
+    white-space: nowrap;
+
+    small {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    @include sm {
+        flex-direction: row;
+        gap: $space-2;
+        min-height: 48px;
+        padding-inline: $space-3;
+    }
+}

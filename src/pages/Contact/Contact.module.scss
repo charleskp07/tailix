@@ -1,0 +1,87 @@
+@use 'glass' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.sec {
+    display: grid;
+    gap: $space-6;
+    justify-items: start;
+    max-width: $container-width;
+    margin-inline: auto;
+    padding: $space-16 $space-5 clamp(64px, 9vw, 120px);
+
+    @include md {
+        padding-inline: $space-8;
+    }
+}
+
+.mail {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-6 $space-8;
+    border-radius: $radius-3xl;
+    background: c(navy);
+    color: #fff;
+    font-family: $font-display;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    text-decoration: none;
+    word-break: break-all;
+
+    svg {
+        flex-shrink: 0;
+        color: c(accent);
+    }
+}
+
+.todo,
+.note {
+    max-width: 36rem;
+    line-height: 1.65;
+    color: c(text-2);
+}
+
+.mail {
+    @include glass-dark(0.92, 16px);
+    @include press;
+    border-radius: 36px;
+}
+
+.wa {
+    @include focus-ring;
+    @include press;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-6 $space-8;
+    border-radius: 36px;
+    background: #1faa59;
+    color: #fff;
+    font-family: $font-display;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    text-decoration: none;
+}
+
+// ---------- Mise en page à deux colonnes avec l'illustration
+.sec {
+    @include lg {
+        grid-template-columns: 1.1fr 1fr;
+        gap: $space-16;
+        align-items: center;
+    }
+}
+
+.info {
+    display: grid;
+    gap: $space-6;
+    justify-items: start;
+}
+
+.art {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    border-radius: 40px;
+    justify-self: center;
+}

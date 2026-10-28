@@ -1,0 +1,71 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-3;
+}
+
+.center {
+    justify-content: center;
+}
+
+.badge {
+    @include focus-ring;
+    display: inline-flex;
+    height: 48px;
+    border-radius: $radius-xl;
+    transition: transform 0.25s $ease-out;
+
+    &:active {
+        transform: scale(0.96);
+    }
+
+    @include md {
+        height: 52px;
+    }
+}
+
+.img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+.apk {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-3;
+    height: 100%;
+    padding-inline: $space-4 $space-5;
+    border-radius: $radius-xl;
+    background: #000;
+    box-shadow: inset 0 0 0 1px #a6a6a6;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.apkIcon {
+    height: 55%;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.apkText {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.apkSmall {
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+
+.apkBig {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
