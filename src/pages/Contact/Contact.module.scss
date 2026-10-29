@@ -1,70 +1,17 @@
-@use 'glass' as *;
-@use 'variables' as *;
-@use 'mixins' as *;
+@use 'variables'as *;
+@use 'mixins'as *;
 
 .sec {
     display: grid;
-    gap: $space-6;
-    justify-items: start;
+    gap: $space-10;
     max-width: $container-width;
     margin-inline: auto;
-    padding: $space-16 $space-5 clamp(64px, 9vw, 120px);
+    padding: $space-12 $space-5 clamp(64px, 9vw, 120px);
 
     @include md {
         padding-inline: $space-8;
     }
-}
 
-.mail {
-    @include focus-ring;
-    display: inline-flex;
-    align-items: center;
-    gap: $space-4;
-    padding: $space-6 $space-8;
-    border-radius: $radius-3xl;
-    background: c(navy);
-    color: #fff;
-    font-family: $font-display;
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    text-decoration: none;
-    word-break: break-all;
-
-    svg {
-        flex-shrink: 0;
-        color: c(accent);
-    }
-}
-
-.todo,
-.note {
-    max-width: 36rem;
-    line-height: 1.65;
-    color: c(text-2);
-}
-
-.mail {
-    @include glass-dark(0.92, 16px);
-    @include press;
-    border-radius: 36px;
-}
-
-.wa {
-    @include focus-ring;
-    @include press;
-    display: inline-flex;
-    align-items: center;
-    gap: $space-4;
-    padding: $space-6 $space-8;
-    border-radius: 36px;
-    background: #1faa59;
-    color: #fff;
-    font-family: $font-display;
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    text-decoration: none;
-}
-
-// ---------- Mise en page à deux colonnes avec l'illustration
-.sec {
     @include lg {
         grid-template-columns: 1.1fr 1fr;
         gap: $space-16;
@@ -75,13 +22,60 @@
 .info {
     display: grid;
     gap: $space-6;
-    justify-items: start;
+    align-content: start;
 }
+
+.list {
+    border-bottom: 1px solid c(divider);
+}
+
+.line {
+    @include focus-ring;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: $space-4;
+    padding-block: $space-6;
+    border-top: 1px solid c(divider);
+    color: c(primary);
+    font-family: $font-display;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    text-decoration: none;
+    word-break: break-word;
+    transition: color 0.2s;
+
+    svg {
+        flex-shrink: 0;
+        color: c(accent-hover);
+        transition: transform 0.3s $ease-out;
+    }
+
+    &:hover {
+        color: c(primary-hover);
+        text-decoration: underline;
+        text-decoration-color: c(accent);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.25em;
+    }
+
+    &:hover svg:last-child {
+        transform: translate(3px, -3px);
+    }
+}
+
+.todo,
+.note {
+    max-width: 36rem;
+    line-height: 1.65;
+    color: c(text-2);
+}
+
 
 .art {
     width: 100%;
     max-width: 460px;
     height: auto;
-    border-radius: 40px;
     justify-self: center;
+    -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
+    mask-image: radial-gradient(closest-side, #000 62%, transparent 100%);
 }

@@ -1,9 +1,8 @@
-@use 'glass' as *;
-@use 'variables' as *;
-@use 'mixins' as *;
+@use 'variables'as *;
+@use 'mixins'as *;
 
 .sec {
-    padding-block: $space-12 clamp(64px, 9vw, 120px);
+    padding-block: $space-10 clamp(64px, 9vw, 120px);
 }
 
 .wrap {
@@ -16,164 +15,15 @@
     }
 }
 
-.row {
-    display: grid;
-    gap: $space-4;
-    align-items: center;
-    padding-block: $space-10;
-    border-top: 1px solid c(divider);
-
-    h2 {
-        font-family: $font-display;
-        font-size: 2rem;
-        font-weight: 400;
-        color: c(primary);
-    }
-
-    p {
-        line-height: 1.6;
-        color: c(text-2);
-    }
-
-    @include lg {
-        grid-template-columns: 1fr 2fr auto;
-        gap: $space-12;
-    }
-}
-
-.rec h2::after {
-    content: '';
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-left: $space-3;
-    border-radius: 50%;
-    background: c(accent);
-}
-
-.hint {
-    margin-top: $space-2;
-    font-weight: 600;
-    color: c(primary) !important;
-}
-
-.apk {
-    padding: $space-8 $space-5;
-    border-radius: $radius-3xl;
-    border-top: 0;
-    background: c(navy);
-
-    h2,
-    p,
-    li {
-        color: #fff;
-    }
-
-    p {
-        color: c(on-navy);
-    }
-
-    @include md {
-        padding: $space-10;
-    }
-}
-
-.steps {
-    display: grid;
-    gap: $space-2;
-    margin: $space-4 0;
-    padding-left: $space-5;
-    line-height: 1.5;
-    color: c(on-navy);
-}
-
-.warn {
-    display: flex;
-    gap: $space-2;
-    align-items: center;
-    font-size: 0.9rem;
-
-    svg {
-        flex-shrink: 0;
-        color: c(accent);
-    }
-}
-
-.btn {
-    @include focus-ring;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: $space-2;
-    min-height: 52px;
-    padding-inline: $space-6;
-    border-radius: $radius-md;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s $ease-out;
-}
-
-a.btn:hover {
-    transform: translateY(-2px);
-}
-
-.btnNavy {
-    background: c(primary);
-    color: #fff;
-}
-
-.btnAccent {
-    background: c(accent);
-    color: c(on-accent);
-}
-
-.btnOff {
-    background: c(border);
-    color: c(text-2);
-}
-
-// ====== Verre ======
-.sec {
-    @include blobs(rgba(214, 228, 245, 0.9), rgba(242, 169, 59, 0.3));
-}
-
-.row:not(.apk) {
-    @include glass(0.6, 16px);
-    margin-bottom: $space-4;
-    padding: $space-8 $space-6;
-    border-radius: 32px;
-
-    @include md {
-        padding-inline: $space-10;
-    }
-}
-
-.apk {
-    @include glass-dark(0.9, 20px);
-    border-radius: 36px;
-}
-
-.btn {
-    border-radius: $radius-full;
-
-    &:active {
-        transform: scale(0.96);
-    }
-}
-
-// ====== Code QR (ordinateur uniquement) ======
 .qr {
     display: none;
 
     @include lg {
-        @include glass(0.7, 16px);
         display: flex;
         align-items: center;
         gap: $space-6;
         max-width: 560px;
-        margin-bottom: $space-6;
-        padding: $space-5 $space-6;
-        border-radius: 32px;
+        margin-bottom: $space-10;
 
         p {
             line-height: 1.55;
@@ -188,13 +38,140 @@ a.btn:hover {
 
 .qrCode {
     flex-shrink: 0;
-    padding: $space-3;
-    border-radius: 20px;
+    padding: $space-2;
     background: #fff;
-    box-shadow: inset 0 0 0 1px c(border);
+    border: 1px solid c(border);
 }
 
-.apk {
-    background-image: url('/src/assets/patterns/wax-ecailles-light.svg');
-    background-size: 120px;
+.list {
+    border-bottom: 1px solid c(divider);
+}
+
+.row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: $space-4 $space-5;
+    align-items: start;
+    padding-block: $space-8;
+    border-top: 1px solid c(divider);
+
+    @include lg {
+        grid-template-columns: 64px 1fr auto;
+        gap: $space-8;
+        align-items: center;
+        padding-block: $space-10;
+    }
+}
+
+.rec::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: $space-8;
+    bottom: $space-8;
+    width: 4px;
+    border-radius: 2px;
+    background: c(accent);
+}
+
+.logo {
+    width: 52px;
+    height: 52px;
+
+    @include lg {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.apple {
+    color: c(text);
+}
+
+.info {
+    h2 {
+        font-family: $font-display;
+        font-size: clamp(1.6rem, 2vw + 1rem, 2.1rem);
+        font-weight: 400;
+        color: c(primary);
+    }
+
+    p {
+        max-width: 38rem;
+        margin-top: $space-1;
+        line-height: 1.6;
+        color: c(text-2);
+    }
+}
+
+.hint {
+    font-weight: 600;
+    color: c(primary) !important;
+}
+
+.steps {
+    display: grid;
+    gap: $space-2;
+    margin-top: $space-3;
+    padding-left: $space-5;
+    list-style: decimal;
+    line-height: 1.55;
+    color: c(text-2);
+}
+
+.warn {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-3 !important;
+    font-size: 0.9rem;
+    color: c(text) !important;
+
+    svg {
+        flex-shrink: 0;
+        color: c(accent-hover);
+    }
+}
+
+.btn {
+    @include focus-ring;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    min-height: 52px;
+    padding-inline: $space-6;
+    border-radius: $radius-full;
+    font-weight: 600;
+    text-decoration: none;
+    grid-column: 1 / -1;
+    transition: transform 0.25s $ease-out;
+
+    @include lg {
+        grid-column: auto;
+    }
+}
+
+a.btn:hover {
+    transform: translateY(-2px);
+}
+
+a.btn:active {
+    transform: scale(0.96);
+}
+
+.btnNavy {
+    background: c(primary);
+    color: #fff;
+}
+
+.btnAccent {
+    background: c(accent);
+    color: c(on-accent);
+}
+
+.btnOff {
+    border: 1.5px dashed c(border);
+    color: c(text-2);
 }

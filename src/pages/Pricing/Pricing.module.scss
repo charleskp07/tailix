@@ -192,10 +192,6 @@
     font-weight: 600;
     text-decoration: none;
     transition: transform 0.2s $ease-out;
-
-    &:hover {
-        transform: translateY(-2px);
-    }
 }
 
 .note {
@@ -205,13 +201,12 @@
     line-height: 1.6;
 }
 
-// ====== Verre ======
 .head {
     @include blobs(rgba(242, 169, 59, 0.5), rgba(214, 228, 245, 1));
 }
 
 .toggle {
-    @include glass(0.65, 16px);
+    @include glass(0, 16px);
     border-radius: $radius-full;
 }
 
@@ -236,6 +231,8 @@
     @include press;
 }
 
+
+
 .btn {
     border-radius: $radius-full;
 
@@ -243,6 +240,7 @@
         transform: scale(0.96);
     }
 }
+
 
 .on {
     background-image: url('/src/assets/patterns/wax-losanges-light.svg');

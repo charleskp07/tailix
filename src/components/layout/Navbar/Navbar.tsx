@@ -16,14 +16,14 @@ export function Navbar() {
     const panelRef = useRef<HTMLElement>(null)
     const rightRef = useRef<HTMLDivElement>(null)
 
-    // Un fin trait orange se remplit au fil de la lecture de la page
+
     const { scrollYProgress } = useScroll()
     const spring = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.4 })
     const progress = reduce ? scrollYProgress : spring
 
     const pillTransition = reduce ? { duration: 0 } : { type: 'spring' as const, stiffness: 380, damping: 32 }
 
-    // Le creux de la bannière épouse la largeur du groupe « liens + bouton »
+
     useLayoutEffect(() => {
         const el = rightRef.current
         if (!el) return
